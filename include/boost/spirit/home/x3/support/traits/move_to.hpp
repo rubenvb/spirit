@@ -57,7 +57,7 @@ namespace boost { namespace spirit { namespace x3 { namespace traits
         inline void
         move_to_plain(Source&& src, Dest& dest, mpl::false_) // src is not a single-element tuple
         {
-            dest = std::move(src);
+            dest = static_cast<Dest&&>(std::move(src));
         }
         
         template <typename Source, typename Dest>
